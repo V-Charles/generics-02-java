@@ -6,13 +6,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entities.Product;
 import service.CalculationService;
 
 public class Program {
 
 	public static void main(String[] args) {
 		
-		List<Integer> list = new ArrayList<>();
+		List<Product> list = new ArrayList<>();
 		
 		String path = "C:\\Temp\\ws-eclipse\\aula_Generics02\\in.txt";
 		
@@ -20,11 +21,12 @@ public class Program {
 			
 			String line = br.readLine();
 			while(line != null) {
-				list.add(Integer.parseInt(line));
+				String[] fildes = line.split(",");
+				list.add(new Product(fildes[0], Double.parseDouble(fildes[1])));
 				line = br.readLine();
 			}
 			
-			Integer x = CalculationService.max(list);
+			Product x = CalculationService.max(list);
 			System.out.println("Max: ");
 			System.out.println(x);
 			
